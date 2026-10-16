@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Math Web App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧮 Smart Math Web App</h1>
+            <p>Aplikasi pembelajaran matematika interaktif, cepat, dan siap digunakan tanpa backend.</p>
+        </header>
+
+        <!-- Navigasi Tab -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="tab-luas-keliling">📐 Luas & Keliling</button>
+            <button class="tab-btn" data-tab="tab-kategori">📊 Kategori Nilai</button>
+            <button class="tab-btn" data-tab="tab-analisis">📈 Analisis Nilai</button>
+            <button class="tab-btn" data-tab="tab-faktorial">🔢 Faktorial</button>
+            <button class="tab-btn" data-tab="tab-quiz">📝 Quiz</button>
+        </div>
+
+        <!-- TAB 1: LUAS & KELILING -->
+        <div id="tab-luas-keliling" class="tab-content active">
+            <h2>Pilih Jenis Perhitungan</h2>
+            <div class="form-group">
+                <label>Jenis Perhitungan</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="jenisPerhitungan" value="Hitung Luas" checked> Hitung Luas</label>
+                    <label><input type="radio" name="jenisPerhitungan" value="Hitung Keliling"> Hitung Keliling</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="pilihanBangun">Pilih Bangun</label>
+                <select id="pilihanBangun">
+                    <option value="Persegi">Persegi</option>
+                    <option value="Persegi Panjang">Persegi Panjang</option>
+                    <option value="Segitiga">Segitiga</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="groupAngka1">
+                <label id="labelAngka1">Sisi</label>
+                <input type="number" id="angka1" placeholder="Masukkan nilai...">
+            </div>
+
+            <div class="form-group" id="groupAngka2" style="display: none;">
+                <label id="labelAngka2">Input 2</label>
+                <input type="number" id="angka2" placeholder="Masukkan nilai...">
+            </div>
+
+            <div class="form-group" id="groupAngka3" style="display: none;">
+                <label id="labelAngka3">Input 3</label>
+                <input type="number" id="angka3" placeholder="Masukkan nilai...">
+            </div>
+
+            <button id="tombolHitungGeometri" class="btn">🧮 Hitung</button>
+
+            <div class="result-box">
+                <label>Hasil Perhitungan</label>
+                <textarea id="hasilPerhitungan" readonly rows="3" placeholder="Hasil akan muncul di sini..."></textarea>
+            </div>
+        </div>
+
+        <!-- TAB 2: KATEGORI NILAI -->
+        <div id="tab-kategori" class="tab-content">
+            <h2>📊 Kategori Nilai</h2>
+            <div class="form-group">
+                <label for="inputNilaiKategori">Masukkan Nilai</label>
+                <input type="number" id="inputNilaiKategori" placeholder="Contoh: 85">
+            </div>
+            <button id="tombolKategori" class="btn">Cek Kategori</button>
+            <div class="result-box">
+                <label>Kategori</label>
+                <input type="text" id="hasilKategori" readonly placeholder="Hasil kategori...">
+            </div>
+        </div>
+
+        <!-- TAB 3: ANALISIS NILAI & PENCARIAN -->
+        <div id="tab-analisis" class="tab-content">
+            <h2>📈 Analisis Nilai</h2>
+            <p class="info-text">Masukkan beberapa nilai dipisahkan dengan tanda koma.<br>Contoh: <code>70, 80, 90, 75, 85</code></p>
+            
+            <div class="form-group">
+                <label for="dataInput">Data Nilai</label>
+                <input type="text" id="dataInput" placeholder="70, 80, 90, 75, 85">
+            </div>
+            <button id="tombolAnalisis" class="btn">Analisis Data</button>
+            
+            <div class="result-box">
+                <label>Hasil Analisis</label>
+                <textarea id="hasilAnalisis" readonly rows="10" placeholder="Hasil analisis data..."></textarea>
+            </div>
+
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #ddd;">
+
+            <h3>🔎 Pencarian Nilai</h3>
+            <p class="info-text">Masukkan nilai yang ingin dicari di dalam data di atas.</p>
+            <div class="form-group">
+                <label for="targetInput">Nilai yang Dicari</label>
+                <input type="number" id="targetInput" placeholder="Contoh: 80">
+            </div>
+            <button id="tombolCari" class="btn">Cari Nilai</button>
+            
+            <div class="result-box">
+                <label>Hasil Pencarian</label>
+                <textarea id="hasilPencarian" readonly rows="4" placeholder="Hasil pencarian nilai..."></textarea>
+            </div>
+        </div>
+
+        <!-- TAB 4: FAKTORIAL -->
+        <div id="tab-faktorial" class="tab-content">
+            <h2>🔢 Hitung Faktorial</h2>
+            <div class="form-group">
+                <label for="angkaFaktorial">Masukkan Bilangan</label>
+                <input type="number" id="angkaFaktorial" placeholder="Contoh: 5">
+            </div>
+            <button id="tombolFaktorial" class="btn">Hitung Faktorial</button>
+            <div class="result-box">
+                <label>Hasil</label>
+                <input type="text" id="hasilFaktorial" readonly placeholder="Hasil faktorial...">
+            </div>
+        </div>
+
+        <!-- TAB 5: QUIZ -->
+        <div id="tab-quiz" class="tab-content">
+            <h2>📝 Quiz Smart Math</h2>
+            <p class="info-text">Jawablah setiap soal. Setiap jawaban benar mendapatkan <strong>20 poin</strong>. Anda harus menekan <strong>Periksa Jawaban</strong> sebelum dapat melanjutkan.</p>
+
+            <h3 id="nomorSoal">Soal 1 dari 5</h3>
+            <p id="pertanyaanSoal" class="quiz-question">Pertanyaan quiz akan muncul di sini...</p>
+
+            <div class="form-group">
+                <label>Pilih Jawaban</label>
+                <div id="quizOptionsContainer" class="radio-group-vertical">
+                    <!-- Opsi jawaban akan di-generate via JS -->
+                </div>
+            </div>
+
+            <button id="tombolPeriksaQuiz" class="btn">✅ Periksa Jawaban</button>
+            
+            <div class="result-box">
+                <label>Hasil</label>
+                <textarea id="hasilQuiz" readonly rows="4" placeholder="Status jawaban..."></textarea>
+            </div>
+
+            <div class="quiz-actions">
+                <button id="tombolBerikutnyaQuiz" class="btn btn-secondary" disabled>➡️ Soal Berikutnya</button>
+                <button id="tombolMulaiKembaliQuiz" class="btn btn-accent" style="display: none;">🔄 Mulai Kembali</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
